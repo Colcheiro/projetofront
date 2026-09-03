@@ -12,9 +12,12 @@ import UnidadeMedida from './components/cadastros/UnidadeMedida'
 import TipoInformacao from './components/cadastros/TipoInformacao'
 import Indicadores from './components/cadastros/Indicadores'
 
+import Funcionarios from './components/cadastros/Funcionarios'
+
 import './App.css'
 
 function App() {
+
     const [menuAberto, setMenuAberto] = useState(true)
     const [tela, setTela] = useState('inicio')
 
@@ -36,29 +39,60 @@ function App() {
                 <main className="area-conteudo">
 
                     <div className="p-3 border-bottom bg-white">
+
                         <button
                             className="btn btn-primary"
                             onClick={alterarMenu}
                         >
                             ☰ Menu
                         </button>
+
                     </div>
 
-                    {tela === 'inicio' && <Conteudo />}
 
-                    {tela === 'safra' && <Safra />}
+                    {tela === 'inicio' && (
+                        <Conteudo />
+                    )}
 
-                    {tela === 'unidade' && <Unidade />}
 
-                    {tela === 'equipamento' && <Equipamento />}
+                    {tela === 'funcionarios' && (
+                        <Funcionarios />
+                    )}
 
-                    {tela === 'medicao' && <Medicao />}
 
-                    {tela === 'unidademedida' && <UnidadeMedida />}
+                    {tela === 'safra' && (
+                        <Safra />
+                    )}
 
-                    {tela === 'tipoinformacao' && <TipoInformacao />}
 
-                    {tela === 'indicadores' && <Indicadores />}
+                    {tela === 'unidade' && (
+                        <Unidade />
+                    )}
+
+
+                    {tela === 'equipamento' && (
+                        <Equipamento />
+                    )}
+
+
+                    {tela === 'medicao' && (
+                        <Medicao />
+                    )}
+
+
+                    {tela === 'unidademedida' && (
+                        <UnidadeMedida />
+                    )}
+
+
+                    {tela === 'tipoinformacao' && (
+                        <TipoInformacao />
+                    )}
+
+
+                    {tela === 'indicadores' && (
+                        <Indicadores />
+                    )}
 
                 </main>
 

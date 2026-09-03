@@ -19,6 +19,7 @@ function MenuLateral({ aberto, setTela }) {
 
             <div className="d-grid gap-2">
 
+                {/* INÍCIO */}
                 <button
                     className="btn btn-outline-light text-start"
                     onClick={() => setTela('inicio')}
@@ -26,6 +27,8 @@ function MenuLateral({ aberto, setTela }) {
                     Início
                 </button>
 
+
+                {/* CADASTRO */}
                 <button
                     className="btn btn-outline-light text-start"
                     onClick={alterarCadastro}
@@ -33,9 +36,21 @@ function MenuLateral({ aberto, setTela }) {
                     Cadastro {cadastroAberto ? '▲' : '▼'}
                 </button>
 
+
+                {/* SUBMENU */}
                 {cadastroAberto && (
                     <div className="ms-3 d-grid gap-2">
 
+                        {/* FUNCIONÁRIOS */}
+                        <button
+                            className="btn btn-sm btn-dark text-start"
+                            onClick={() => setTela('funcionarios')}
+                        >
+                            Funcionários
+                        </button>
+
+
+                        {/* SAFRAS */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('safra')}
@@ -43,6 +58,8 @@ function MenuLateral({ aberto, setTela }) {
                             Safras
                         </button>
 
+
+                        {/* UNIDADES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('unidade')}
@@ -50,6 +67,8 @@ function MenuLateral({ aberto, setTela }) {
                             Unidades
                         </button>
 
+
+                        {/* EQUIPAMENTOS */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('equipamento')}
@@ -57,6 +76,8 @@ function MenuLateral({ aberto, setTela }) {
                             Equipamentos
                         </button>
 
+
+                        {/* MEDIÇÕES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('medicao')}
@@ -64,6 +85,8 @@ function MenuLateral({ aberto, setTela }) {
                             Medições
                         </button>
 
+
+                        {/* UNIDADES DE MEDIDA */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('unidademedida')}
@@ -71,6 +94,8 @@ function MenuLateral({ aberto, setTela }) {
                             Unidades de Medida
                         </button>
 
+
+                        {/* TIPOS DE INFORMAÇÃO */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('tipoinformacao')}
@@ -78,6 +103,8 @@ function MenuLateral({ aberto, setTela }) {
                             Tipos de Informação
                         </button>
 
+
+                        {/* INDICADORES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('indicadores')}
@@ -89,6 +116,7 @@ function MenuLateral({ aberto, setTela }) {
                 )}
 
             </div>
+
         </aside>
     )
 }

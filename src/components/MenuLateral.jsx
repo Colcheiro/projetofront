@@ -1,6 +1,12 @@
+
 import { useState } from 'react'
 
-function MenuLateral({ aberto, setTela }) {
+function MenuLateral({
+    aberto,
+    setTela,
+    indicadores = [],
+    selecionarIndicador
+}) {
     const [cadastroAberto, setCadastroAberto] = useState(false)
 
     function alterarCadastro() {
@@ -18,7 +24,6 @@ function MenuLateral({ aberto, setTela }) {
             </h2>
 
             <div className="d-grid gap-2">
-
                 {/* INÍCIO */}
                 <button
                     className="btn btn-outline-light text-start"
@@ -27,6 +32,13 @@ function MenuLateral({ aberto, setTela }) {
                     Início
                 </button>
 
+                {/* LOGIN */}
+                <button
+                    className="btn btn-outline-info text-start"
+                    onClick={() => setTela('login')}
+                >
+                    Login
+                </button>
 
                 {/* CADASTRO */}
                 <button
@@ -36,12 +48,9 @@ function MenuLateral({ aberto, setTela }) {
                     Cadastro {cadastroAberto ? '▲' : '▼'}
                 </button>
 
-
-                {/* SUBMENU */}
+                {/* SUBMENU DE CADASTROS */}
                 {cadastroAberto && (
                     <div className="ms-3 d-grid gap-2">
-
-                        {/* FUNCIONÁRIOS */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('funcionarios')}
@@ -49,8 +58,62 @@ function MenuLateral({ aberto, setTela }) {
                             Funcionários
                         </button>
 
+                        {/* NOVOS CADASTROS DA API */}
+                        <hr className="border-light" />
 
-                        {/* SAFRAS */}
+                        <small className="text-info">
+                            Cadastros da API
+                        </small>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('safras')}
+                        >
+                            Safras (API)
+                        </button>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('unidades')}
+                        >
+                            Unidades (API)
+                        </button>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('unidadesMedida')}
+                        >
+                            Unidades de Medida (API)
+                        </button>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('equipamentos')}
+                        >
+                            Equipamentos (API)
+                        </button>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('tiposInformacao')}
+                        >
+                            Tipos de Informação (API)
+                        </button>
+
+                        <button
+                            className="btn btn-sm btn-outline-info text-start"
+                            onClick={() => setTela('medicoes')}
+                        >
+                            Medições (API)
+                        </button>
+
+                        {/* CADASTROS ANTIGOS PRESERVADOS */}
+                        <hr className="border-light" />
+
+                        <small className="text-white-50">
+                            Cadastros anteriores
+                        </small>
+
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('safra')}
@@ -58,8 +121,6 @@ function MenuLateral({ aberto, setTela }) {
                             Safras
                         </button>
 
-
-                        {/* UNIDADES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('unidade')}
@@ -67,8 +128,6 @@ function MenuLateral({ aberto, setTela }) {
                             Unidades
                         </button>
 
-
-                        {/* EQUIPAMENTOS */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('equipamento')}
@@ -76,8 +135,6 @@ function MenuLateral({ aberto, setTela }) {
                             Equipamentos
                         </button>
 
-
-                        {/* MEDIÇÕES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('medicao')}
@@ -85,8 +142,6 @@ function MenuLateral({ aberto, setTela }) {
                             Medições
                         </button>
 
-
-                        {/* UNIDADES DE MEDIDA */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('unidademedida')}
@@ -94,8 +149,6 @@ function MenuLateral({ aberto, setTela }) {
                             Unidades de Medida
                         </button>
 
-
-                        {/* TIPOS DE INFORMAÇÃO */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('tipoinformacao')}
@@ -103,20 +156,45 @@ function MenuLateral({ aberto, setTela }) {
                             Tipos de Informação
                         </button>
 
-
-                        {/* INDICADORES */}
                         <button
                             className="btn btn-sm btn-dark text-start"
                             onClick={() => setTela('indicadores')}
                         >
-                            Indicadores
+                            Cadastro de Indicadores
                         </button>
 
+                        <button
+                            className="btn btn-sm btn-dark text-start"
+                            onClick={() => setTela('usuarios')}
+                        >
+                            Usuários
+                        </button>
                     </div>
                 )}
 
-            </div>
+                {/* INDICADORES DINÂMICOS */}
+                <hr className="border-light" />
 
+                <h3 className="h6 text-uppercase">
+                    Indicadores
+                </h3>
+
+                {indicadores.map((item) => (
+                    <button
+                        key={item.Id}
+                        className="btn btn-outline-light text-start"
+                        onClick={() => selecionarIndicador(item)}
+                    >
+                        {item.Nome}
+                    </button>
+                ))}
+
+                {indicadores.length === 0 && (
+                    <small className="text-white-50">
+                        Nenhum indicador cadastrado.
+                    </small>
+                )}
+            </div>
         </aside>
     )
 }
